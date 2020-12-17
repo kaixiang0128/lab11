@@ -1,8 +1,9 @@
 package com.example.lab11;
 
+
 import android.content.Context;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDBHelper extends SQLiteOpenHelper {
     private static final String name = "mdatabase.db";
@@ -12,13 +13,14 @@ public class MyDBHelper extends SQLiteOpenHelper {
         super(context, name, null, version);
     }
     @Override
-    public void onCreate(SQLiteOpenHelper db) {
-        db.execSQL("CREATE TABLE myTable(book text PRIMARY KEY, price integer NOT NULL)")
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE myTable(book text PRIMARY KEY, price integer NOT NULL)");
     }
+
     @Override
-    public void onUpgrade(SQLiteOpenHelper db, int oldVersion,
-                          int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS myTable");
         onCreate(db);
     }
 }
+
